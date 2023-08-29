@@ -26,10 +26,10 @@ div.flow {
 }
 
 div.row button {
-flex-grow: 1;
+    flex-grow: 1;
 }
 div.row p {
-flex-grow: 1;    
+    flex-grow: 1;    
 }*/
 
 
@@ -55,6 +55,19 @@ button:hover {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
+    
+}
+
+.flow {
+    border: 1px solid black;
+}
+
+.showMe {
+    display: block;
+}
+
+.hideMe {
+    display: none;
 }
 
 
@@ -105,7 +118,7 @@ button {
 }
 
 .challengesbtn {
-
+    
     width:150px;
     height: 30px;
     color: black;
@@ -203,31 +216,31 @@ button {
 }
 
 .completedchallengesbtn {
-  width:150px;
-  height: 30px;
-  color: #FFF;
-  background: #5AC467;
-  font-weight: bold;
-  font-family: Typewriter;
-  border: 3px solid #127A20;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 140%;
-  transition-duration: 0.2s;
+    width:150px;
+    height: 30px;
+    color: #FFF;
+    background: #5AC467;
+    font-weight: bold;
+    font-family: Typewriter;
+    border: 3px solid #127A20;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 140%;
+    transition-duration: 0.2s;
 }
 
 .onchallengebtn {
-  width:150px;
-  height: 30px;
-  color: #FFF;
-  background: #1F1F1F;
-  font-weight: bold;
-  font-family: Typewriter;
-  border: 3px solid #127A20;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 140%;
-  transition-duration: 0.2s;
+    width:150px;
+    height: 30px;
+    color: #FFF;
+    background: #1F1F1F;
+    font-weight: bold;
+    font-family: Typewriter;
+    border: 3px solid #127A20;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 140%;
+    transition-duration: 0.2s;
 }
 
 #quickReset {
@@ -662,17 +675,17 @@ button {
 }
 
 .autobuyerbtn {
-      color: white;
-      background: #1F1F1F;
-      font-weight: bold;
-      font-size: 70%;
-      border: 1px solid #ED85DF;
-      width: 180px;
-      height: 35px;
-      transition-duration: 0.2s;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: Typewriter;
+    color: white;
+    background: #1F1F1F;
+    font-weight: bold;
+    font-size: 70%;
+    border: 1px solid #ED85DF;
+    width: 180px;
+    height: 35px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: Typewriter;
 }
 
 .autobuyerbtn:hover {
@@ -693,7 +706,7 @@ button {
     position: relative;
     top: 50%;
     left: 40%;
-
+    
 }
 
 .crunchbtn:hover {
@@ -702,14 +715,14 @@ button {
     font-weight: bold;
     border: 2px solid #4980CC;
     border-radius: 4px;
-
+    
 }
 
 .popup {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
     border: 3px solid black;
     width: 300px;
     height: 120px;
@@ -725,35 +738,35 @@ button {
 }
 
 .savemenu {
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }
 
 .savemenu div {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 }
 
 .savemenu .closebtn {
-	width: 30px;
-	height: 30px;
-	font-size: 1.5rem;
-	line-height: 1.5rem;
-	position: absolute;
-	top: 5px;
-	right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .savemenu .storebtn {
-	margin: 5px;
+    margin: 5px;
 }
 
 .save_selected {
-	display: none;
+    display: none;
 }
 
 #footercontainer {
@@ -814,7 +827,7 @@ button {
 .greedbtn:hover {
     cursor: pointer;
     background-color: #9E913A;
-
+    
 }
 
 #replauto1 {
@@ -1045,7 +1058,7 @@ button {
     font-size: 0.85rem;
     position: fixed;
     left: 50%;
-
+    
     bottom: 5px;
     z-index: 1;
 }
@@ -1689,7 +1702,7 @@ br {
 .rel {
     position: relative;
 }
-  
+
 
 
 

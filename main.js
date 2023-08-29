@@ -12,7 +12,6 @@ const buyAmateurButton = document.querySelector("#buy-amateur-button");
 const amateurCounter = document.querySelector("#amateur-count");
 const amateurCost = document.querySelector("#amateur-cost");
 
-
 const convertNoviceButton = document.querySelector("#convert-novice-button");
 const elementalCounter = document.querySelector("#elemental-count");
 const elementalCost = document.querySelector("#elemental-cost");
@@ -23,9 +22,24 @@ const natureCurrency = document.querySelector("#nature-count");
 const chaosCurrency = document.querySelector("#chaos-count");
 
 
-    
-    
-    
+const hireEarthButton = document.querySelector("#hire-earth-button");
+const hireFireButton = document.querySelector("#hire-fire-button");
+const hireNatureButton = document.querySelector("#hire-nature-button");
+const hireChaosButton = document.querySelector("#hire-chaos-button");
+
+
+const earthRealm = document.querySelector("#earthRealm");
+const natureRealm = document.querySelector("#natureRealm");
+const fireRealm = document.querySelector("#fireRealm");
+const chaosRealm = document.querySelector("#chaosRealm");
+
+
+
+
+
+
+
+
 
 
 /*
@@ -70,7 +84,7 @@ buyNoviceButton.addEventListener("click", function() {
         motivation -= buyNoviceCost;
         //cost up
     }
-
+    
     updateUI();
 });
 
@@ -81,7 +95,7 @@ buyAmateurButton.addEventListener("click", function() {
         motivation -= buyAmateurCost;
         //cost up
     }
-
+    
     updateUI();
 });
 
@@ -91,7 +105,57 @@ convertNoviceButton.addEventListener("click", function () {
         //ps
         novices -= convertCost;
     }
+    
+    updateUI();
+});
 
+hireEarthButton.addEventListener("click", function() {
+    if (canAfford(earth, 1)) {
+        //TODO price
+        earthRealm.classList.remove("hideMe");
+    }
+});
+
+hireFireButton.addEventListener("click", function() {
+    if (canAfford(fire, 1)) {
+        //TODO price
+        fireRealm.classList.remove("hideMe");
+    }
+});
+
+hireNatureButton.addEventListener("click", function() {
+    if (canAfford(nature, 1)) {
+        //TODO price
+        natureRealm.classList.remove("hideMe");
+    }
+});
+
+hireChaosButton.addEventListener("click", function() {
+    if (canAfford(chaos, 1)) {
+        //TODO price
+        chaosRealm.classList.remove("hideMe");
+    }
+});
+
+resetbtn.addEventListener("click", function () {
+    motivation = 10;
+    mps = 0;
+    
+    buyNoviceCost = 1; //TODO put to 10, this is just for testing
+    novices = 0;
+    novicesPerSecond = 0;
+    
+    buyAmateurCost = 100;
+    amateurs = 0;
+    
+    convertCost = 5;
+    elementals = 0;
+    
+    earth = 0;
+    fire = 0;
+    nature = 0;
+    chaos = 0;
+    
     updateUI();
 });
 
@@ -123,34 +187,34 @@ setInterval( function() {
 function updateUI() {
     
     calculateNovices();
-
-calculateMPS();
-calculateElementalGain();
-
-
+    
+    calculateMPS();
+    calculateElementalGain();
+    
+    
     currencyHeading.innerHTML = `Motivation: ${motivation}`;
     motPerSecondHeading.innerHTML = `Motivation per Second: ${mps}`;
-
+    
     noviceCounter.innerHTML = `Own: ${novices} P/S ${novicesPerSecond}`;
     noviceCost.innerHTML = `Cost: ${buyNoviceCost}`;
-
-amateurCounter.innerHTML = `Own: ${amateurs}`;
+    
+    amateurCounter.innerHTML = `Own: ${amateurs}`;
     amateurCost.innerHTML = `Cost: ${buyAmateurCost}`;
-
+    
     elementalCounter.innerHTML = `Own: ${elementals}`;
     elementalCost.innerHTML = `Cost: ${convertCost}`;
-
-    earthCurrency.innerHTML = `Earth: ${earth}`;
-    fireCurrency.innerHTML = `Fire: ${fire}`;
-    natureCurrency.innerHTML = `Nature: ${nature}`;
-    chaosCurrency.innerHTML = `Chaos: ${chaos}`;
-
+    
+    earthCurrency.innerHTML = `Earth: ${Number(earth).toFixed(2)}`;
+    fireCurrency.innerHTML = `Fire: ${Number(fire).toFixed(2)}`;
+    natureCurrency.innerHTML = `Nature: ${Number(nature).toFixed(2)}`;
+    chaosCurrency.innerHTML = `Chaos: ${Number(chaos).toFixed(2)}`;
+    
     /*let costDown = Math.floor(autoCost * 100) / 100;
     autoButton.innerHTML = `Buy Autoizer ${costDown}`;
-
+    
     spellHeading.innerHTML = `Spells: ${spells}`;
     castHeading.innerHTML = `Casters: ${casters}`;
-
+    
     let cost2Down = Math.floor(castCost * 100) / 100;
     castButton.innerHTML = `Buy Caster ${cost2Down}`*/
 }
@@ -168,48 +232,40 @@ function calculateNovices() {
 }
 
 function calculateElementalGain() {
-//elementals
+    //elementals
     let tempEarth = 0;
     let tempFire = 0;
     let tempNature = 0;
     let tempChaos = 0;
-
+    
     for (var i = 0; i < elementals; i++) {
         console.log("Rolling....");
         let rand = Math.floor(Math.random() * 4); // 0, 1, 2, 3
         switch (rand) {
             case 0:
-                console.log("Got earth");
-                tempEarth += .1; //TODO vars for this
-                break;
+            // console.log("Got earth");
+            tempEarth += .1; //TODO vars for this
+            break;
             case 1:
-                console.log("Got fire");
-                tempFire += .1; //TODO vars for this
-                break;
+            // console.log("Got fire");
+            tempFire += .1; //TODO vars for this
+            break;
             case 2:
-                console.log("Got nature");
-                tempNature += .1; //TODO vars for this
-                break;
+            // console.log("Got nature");
+            tempNature += .1; //TODO vars for this
+            break;
             case 3:
-                console.log("Got chaos");
-                tempChaos += .1; //TODO vars for this
-                break;
+            // console.log("Got chaos");
+            tempChaos += .1; //TODO vars for this
+            break;
         }
     }
-
+    
     earth += tempEarth;
-fire += tempFire;
-nature += tempNature;
-chaos += tempChaos;
-
-/*var eee = (earth/1).toFixed(2);
-earth = eee;
-var fff = (fire+0).toFixed(2);
-fire = fff;
-var nnn = (nature+0).toFixed(2);
-nature = nnn;
-var ccc = (chaos+0).toFixed(2);
-chaos = ccc;*/
+    fire += tempFire;
+    nature += tempNature;
+    chaos += tempChaos;
+    
 }
 
 
@@ -302,6 +358,6 @@ var player = {
     options: {
         
     }*/
-
+    
 };
 
