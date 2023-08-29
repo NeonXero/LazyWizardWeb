@@ -4,7 +4,13 @@
     box-sizing: border-box;
 }
 
-div {
+div.flow {
+    /*background: red;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*div {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -24,7 +30,7 @@ flex-grow: 1;
 }
 div.row p {
 flex-grow: 1;    
-}
+}*/
 
 
 
@@ -43,6 +49,14 @@ button:hover {
     color: skyblue;
     border: 2px solid skyblue;
 }
+
+/* GRID TESTING */
+.grid-even-columns {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 
 /*@font-face {
     font-family: 'Open Sans Condensed';

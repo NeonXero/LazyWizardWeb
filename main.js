@@ -13,13 +13,22 @@ const amateurCounter = document.querySelector("#amateur-count");
 const amateurCost = document.querySelector("#amateur-cost");
 
 
+const convertNoviceButton = document.querySelector("#convert-novice-button");
+const elementalCounter = document.querySelector("#elemental-count");
+const elementalCost = document.querySelector("#elemental-cost");
+
+const earthCurrency = document.querySelector("#earth-count");
+const fireCurrency = document.querySelector("#fire-count");
+const natureCurrency = document.querySelector("#nature-count");
+const chaosCurrency = document.querySelector("#chaos-count");
+
+
+    
+    
+    
+
 
 /*
-
-
-
-
-
 const castHeading = document.querySelector("#casters-heading");
 const spellButton = document.querySelector("#spell-button");
 const castButton = document.querySelector("#cast-button");
@@ -29,12 +38,21 @@ const castButton = document.querySelector("#cast-button");
 let motivation = 10;
 let mps = 0;
 
-let buyNoviceCost = 10;
+let buyNoviceCost = 1; //TODO put to 10, this is just for testing
 let novices = 0;
 let novicesPerSecond = 0;
 
 let buyAmateurCost = 100;
 let amateurs = 0;
+
+let convertCost = 5;
+let elementals = 0;
+
+let earth = 0;
+let fire = 0;
+let nature = 0;
+let chaos = 0;
+
 
 /*let spells = 0;
 let casters = 0;
@@ -62,6 +80,16 @@ buyAmateurButton.addEventListener("click", function() {
         novicesPerSecond += 1;
         motivation -= buyAmateurCost;
         //cost up
+    }
+
+    updateUI();
+});
+
+convertNoviceButton.addEventListener("click", function () {
+    if (canAfford(novices, convertCost)) {
+        elementals += 1;
+        //ps
+        novices -= convertCost;
     }
 
     updateUI();
@@ -97,6 +125,8 @@ function updateUI() {
     calculateNovices();
 
 calculateMPS();
+calculateElementalGain();
+
 
     currencyHeading.innerHTML = `Motivation: ${motivation}`;
     motPerSecondHeading.innerHTML = `Motivation per Second: ${mps}`;
@@ -106,6 +136,14 @@ calculateMPS();
 
 amateurCounter.innerHTML = `Own: ${amateurs}`;
     amateurCost.innerHTML = `Cost: ${buyAmateurCost}`;
+
+    elementalCounter.innerHTML = `Own: ${elementals}`;
+    elementalCost.innerHTML = `Cost: ${convertCost}`;
+
+    earthCurrency.innerHTML = `Earth: ${earth}`;
+    fireCurrency.innerHTML = `Fire: ${fire}`;
+    natureCurrency.innerHTML = `Nature: ${nature}`;
+    chaosCurrency.innerHTML = `Chaos: ${chaos}`;
 
     /*let costDown = Math.floor(autoCost * 100) / 100;
     autoButton.innerHTML = `Buy Autoizer ${costDown}`;
@@ -127,6 +165,51 @@ function calculateMPS() {
 
 function calculateNovices() {
     novices += novicesPerSecond;
+}
+
+function calculateElementalGain() {
+//elementals
+    let tempEarth = 0;
+    let tempFire = 0;
+    let tempNature = 0;
+    let tempChaos = 0;
+
+    for (var i = 0; i < elementals; i++) {
+        console.log("Rolling....");
+        let rand = Math.floor(Math.random() * 4); // 0, 1, 2, 3
+        switch (rand) {
+            case 0:
+                console.log("Got earth");
+                tempEarth += .1; //TODO vars for this
+                break;
+            case 1:
+                console.log("Got fire");
+                tempFire += .1; //TODO vars for this
+                break;
+            case 2:
+                console.log("Got nature");
+                tempNature += .1; //TODO vars for this
+                break;
+            case 3:
+                console.log("Got chaos");
+                tempChaos += .1; //TODO vars for this
+                break;
+        }
+    }
+
+    earth += tempEarth;
+fire += tempFire;
+nature += tempNature;
+chaos += tempChaos;
+
+/*var eee = (earth/1).toFixed(2);
+earth = eee;
+var fff = (fire+0).toFixed(2);
+fire = fff;
+var nnn = (nature+0).toFixed(2);
+nature = nnn;
+var ccc = (chaos+0).toFixed(2);
+chaos = ccc;*/
 }
 
 
