@@ -27,6 +27,16 @@ const hireFireButton = document.querySelector("#hire-fire-button");
 const hireNatureButton = document.querySelector("#hire-nature-button");
 const hireChaosButton = document.querySelector("#hire-chaos-button");
 
+//Ele owns and costs TODO 921 a.m.
+const earthCounter = document.querySelector("#earth-own");
+const earthCost = document.querySelector("#earth-cost"); //on button how much cost
+const fireCounter = document.querySelector("#fire-own");
+const fireCost = document.querySelector("#fire-cost");
+const natureCounter = document.querySelector("#nature-own");
+const natureCost = document.querySelector("#nature-cost");
+const chaosCounter = document.querySelector("#chaos-own");
+const chaosCost = document.querySelector("#chaos-cost");
+
 
 const earthRealm = document.querySelector("#earthRealm");
 const natureRealm = document.querySelector("#natureRealm");
@@ -67,35 +77,44 @@ let fire = 0;
 let nature = 0;
 let chaos = 0;
 
+let earthCostC = 1;
+let fireCostC = 1;
+let natureCostC = 1;
+let chaosCostC = 1;
+
+let earthMages = 0;
+let fireMages = 0;
+let natureMages = 0;
+let chaosMages = 0;
 
 /*let spells = 0;
 let casters = 0;
 let castCost = 20;*/
 
-$( document ).ready(function() {
-    console.log( "ready!" );
+$(document).ready(function () {
+    console.log("ready!");
     updateUI();
 });
 
 // Event Listeners
-buyNoviceButton.addEventListener("click", function() {
+buyNoviceButton.addEventListener("click", function () {
     if (canAfford(motivation, buyNoviceCost)) {
         novices += 1
         motivation -= buyNoviceCost;
         //cost up
     }
-    
+
     updateUI();
 });
 
-buyAmateurButton.addEventListener("click", function() {
+buyAmateurButton.addEventListener("click", function () {
     if (canAfford(motivation, buyAmateurCost)) {
         amateurs += 1;
         novicesPerSecond += 1;
         motivation -= buyAmateurCost;
         //cost up
     }
-    
+
     updateUI();
 });
 
@@ -105,57 +124,69 @@ convertNoviceButton.addEventListener("click", function () {
         //ps
         novices -= convertCost;
     }
-    
+
     updateUI();
 });
 
-hireEarthButton.addEventListener("click", function() {
-    if (canAfford(earth, 1)) {
-        //TODO price
+hireEarthButton.addEventListener("click", function () {
+    if (canAfford(earth, earthCostC)) {
+        earth -= earthCostC;
         earthRealm.classList.remove("hideMe");
+        earthMages += 1;
     }
+
+    updateUI();
 });
 
-hireFireButton.addEventListener("click", function() {
-    if (canAfford(fire, 1)) {
-        //TODO price
+hireFireButton.addEventListener("click", function () {
+    if (canAfford(fire, fireCostC)) {
+        fire -= fireCostC;
         fireRealm.classList.remove("hideMe");
+        fireMages += 1;
     }
+
+    updateUI();
 });
 
-hireNatureButton.addEventListener("click", function() {
-    if (canAfford(nature, 1)) {
-        //TODO price
+hireNatureButton.addEventListener("click", function () {
+    if (canAfford(nature, natureCostC)) {
+        nature -= natureCostC;
         natureRealm.classList.remove("hideMe");
+        natureMages += 1;
     }
+
+    updateUI();
 });
 
-hireChaosButton.addEventListener("click", function() {
-    if (canAfford(chaos, 1)) {
-        //TODO price
+hireChaosButton.addEventListener("click", function () {
+    if (canAfford(chaos, chaosCostC)) {
+        chaos -= chaosCostC;
         chaosRealm.classList.remove("hideMe");
+        chaosMages += 1;
     }
+
+    updateUI();
 });
 
 resetbtn.addEventListener("click", function () {
     motivation = 10;
     mps = 0;
-    
+
     buyNoviceCost = 1; //TODO put to 10, this is just for testing
     novices = 0;
     novicesPerSecond = 0;
-    
+
     buyAmateurCost = 100;
     amateurs = 0;
-    
+
     convertCost = 5;
     elementals = 0;
-    
+
     earth = 0;
     fire = 0;
     nature = 0;
     chaos = 0;
-    
+
     updateUI();
 });
 
@@ -179,36 +210,46 @@ castButton.addEventListener("click", function() {
 
 
 // Game Loop and handling
-setInterval( function() {
+setInterval(function () {
     motivation += (mps);
     updateUI();
 }, 1000);
 
 function updateUI() {
-    
+    //TODO thing with no triggering of more stats
     calculateNovices();
-    
+
     calculateMPS();
     calculateElementalGain();
-    
-    
+
+
     currencyHeading.innerHTML = `Motivation: ${motivation}`;
     motPerSecondHeading.innerHTML = `Motivation per Second: ${mps}`;
-    
+
     noviceCounter.innerHTML = `Own: ${novices} P/S ${novicesPerSecond}`;
     noviceCost.innerHTML = `Cost: ${buyNoviceCost}`;
-    
+
     amateurCounter.innerHTML = `Own: ${amateurs}`;
     amateurCost.innerHTML = `Cost: ${buyAmateurCost}`;
-    
+
     elementalCounter.innerHTML = `Own: ${elementals}`;
     elementalCost.innerHTML = `Cost: ${convertCost}`;
-    
+
     earthCurrency.innerHTML = `Earth: ${Number(earth).toFixed(2)}`;
     fireCurrency.innerHTML = `Fire: ${Number(fire).toFixed(2)}`;
     natureCurrency.innerHTML = `Nature: ${Number(nature).toFixed(2)}`;
     chaosCurrency.innerHTML = `Chaos: ${Number(chaos).toFixed(2)}`;
-    
+
+    earthCounter.innerHTML = `Own: ${earthMages}`; //TODO don't have any of these counts yet....
+    fireCounter.innerHTML = `Own: ${fireMages}`; //TODO don't have any of these counts yet....
+    natureCounter.innerHTML = `Own: ${natureMages}`; //TODO don't have any of these counts yet....
+    chaosCounter.innerHTML = `Own: ${chaosMages}`; //TODO don't have any of these counts yet....
+
+    earthCost.innerHTML = `Cost: ${earthCostC}`; //TODO make cost go up probably
+    fireCost.innerHTML = `Cost: ${fireCostC}`; //TODO make cost go up probably
+    natureCost.innerHTML = `Cost: ${natureCostC}`; //TODO make cost go up probably
+    chaosCost.innerHTML = `Cost: ${chaosCostC}`; //TODO make cost go up probably
+
     /*let costDown = Math.floor(autoCost * 100) / 100;
     autoButton.innerHTML = `Buy Autoizer ${costDown}`;
     
@@ -237,35 +278,35 @@ function calculateElementalGain() {
     let tempFire = 0;
     let tempNature = 0;
     let tempChaos = 0;
-    
+
     for (var i = 0; i < elementals; i++) {
         console.log("Rolling....");
         let rand = Math.floor(Math.random() * 4); // 0, 1, 2, 3
         switch (rand) {
             case 0:
-            // console.log("Got earth");
-            tempEarth += .1; //TODO vars for this
-            break;
+                // console.log("Got earth");
+                tempEarth += .1; //TODO vars for this
+                break;
             case 1:
-            // console.log("Got fire");
-            tempFire += .1; //TODO vars for this
-            break;
+                // console.log("Got fire");
+                tempFire += .1; //TODO vars for this
+                break;
             case 2:
-            // console.log("Got nature");
-            tempNature += .1; //TODO vars for this
-            break;
+                // console.log("Got nature");
+                tempNature += .1; //TODO vars for this
+                break;
             case 3:
-            // console.log("Got chaos");
-            tempChaos += .1; //TODO vars for this
-            break;
+                // console.log("Got chaos");
+                tempChaos += .1; //TODO vars for this
+                break;
         }
     }
-    
+
     earth += tempEarth;
     fire += tempFire;
     nature += tempNature;
     chaos += tempChaos;
-    
+
 }
 
 
@@ -358,6 +399,6 @@ var player = {
     options: {
         
     }*/
-    
+
 };
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +9,42 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
+
 <body>
-  
+
   <!-- grid test -->
   <div class="grid-even-columns">
     <div class="flow">
       <h1 id="currency-heading">Motivation: </h1>
     </div>
-    
+
     <div class="flow">
       <h2 id="motPerSecond">Motivation per Second: </h2>
     </div>
-    
+
     <div class="flow">
       <p id="earth-count">Own: {}</p> <!-- mining etc -->
       <p id="fire-count">Own: {}</p> <!-- forge etc -->
       <p id="nature-count">Own: {}</p> <!-- plants etc -->
       <p id="chaos-count">Own: {}</p> <!-- fighting etc -->
     </div>
-    
+
     <div class="flow">
       <p id="resetbtn">reset or something idk</p>
     </div>
-    
+
     <div class="flow">
       <button id="buy-novice-button">Hire Novice Caster</button>
       <p id="novice-count">Own: {}</p>
       <p id="novice-cost">Cost: {}</p>
     </div>
-    
+
     <div class="flow">
       <button id="buy-amateur-button">Hire Amateur Caster</button>
       <p id="amateur-count">Own: {}</p>
       <p id="amateur-cost">Cost: {}</p>
     </div>
-    
+
     <div class="flow">
       <button id="convert-novice-button">Convert Novice to Elemental</button>
       <p id="elemental-count">Own: {}</p>
@@ -53,27 +55,27 @@
     </div>
     <div class="flow">
       <button id="hire-earth-button" class="showMe">Hire Earth Mage</button>
-      <p id="elemental-count">Own: {}</p>
-      <p id="elemental-cost">Cost: {}</p>
+      <p id="earth-own">Own: {}</p>
+      <p id="earth-cost">Cost: {}</p>
     </div>
     <div class="flow">
       <button id="hire-fire-button" class="showMe">Hire Fire Mage</button>
-      <p id="elemental-count">Own: {}</p>
-      <p id="elemental-cost">Cost: {}</p>
+      <p id="fire-own">Own: {}</p>
+      <p id="fire-cost">Cost: {}</p>
     </div>
     <div class="flow">
       <button id="hire-nature-button" class="showMe">Hire Nature Mage</button>
-      <p id="elemental-count">Own: {}</p>
-      <p id="elemental-cost">Cost: {}</p>
+      <p id="nature-own">Own: {}</p>
+      <p id="nature-cost">Cost: {}</p>
     </div>
     <div class="flow">
       <button id="hire-chaos-button" class="showMe">Hire Chaos Mage</button>
-      <p id="elemental-count">Own: {}</p>
-      <p id="elemental-cost">Cost: {}</p>
+      <p id="chaos-own">Own: {}</p>
+      <p id="chaos-cost">Cost: {}</p>
     </div>
-    
-    
-    
+
+
+
     <div class="flow hideMe" id="earthRealm">
       <p>shown if you own at least 1 earth mage</p>
     </div>
@@ -86,15 +88,15 @@
     <div class="flow hideMe" id="chaosRealm">
       <p>shown if you own at least 1 chaos mage</p>
     </div>
-    
-    
-    
-    
+
+
+
+
   </div>
-  
-  
-  
-  
+
+
+
+
   <!-- 
     <div>
       
@@ -113,9 +115,10 @@
       
     </div>
   -->
-  
-  
-  
+
+
+
   <script src="main.js"></script>
 </body>
+
 </html>
