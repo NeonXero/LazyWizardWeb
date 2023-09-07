@@ -55,7 +55,7 @@ button:hover {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    
+
 }
 
 .flow {
@@ -68,6 +68,23 @@ button:hover {
 
 .hideMe {
     display: none;
+}
+
+.container {
+    /* justify-content: center; */
+    align-items: center;
+    /* display: flex; */
+    height: 100%;
+    text-align: center;
+}
+
+#natureZone {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 2px solid green;
+    padding: 3rem;
+    background-color: #50ff0044;
 }
 
 

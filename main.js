@@ -44,6 +44,9 @@ const fireRealm = document.querySelector("#fireRealm");
 const chaosRealm = document.querySelector("#chaosRealm");
 
 
+//Nature Zone
+const natZoneAvailable = document.querySelector("#natureZoneAvailable");
+
 
 
 
@@ -62,7 +65,7 @@ const castButton = document.querySelector("#cast-button");
 let motivation = 10;
 let mps = 0;
 
-let buyNoviceCost = 1; //TODO put to 10, this is just for testing
+let buyNoviceCost = 10;
 let novices = 0;
 let novicesPerSecond = 0;
 
@@ -86,6 +89,20 @@ let earthMages = 0;
 let fireMages = 0;
 let natureMages = 0;
 let chaosMages = 0;
+
+//Nature Zone
+let gatherers = 0;
+let planters = 0;
+
+
+//FOR FASTER DEBUGGING
+motivation = 10000;
+novices = 20;
+elementals = 20;
+earthMages = 10;
+fireMages = 10;
+natureMages = 10;
+chaosMages = 10;
 
 /*let spells = 0;
 let casters = 0;
@@ -258,6 +275,9 @@ function updateUI() {
     
     let cost2Down = Math.floor(castCost * 100) / 100;
     castButton.innerHTML = `Buy Caster ${cost2Down}`*/
+
+
+    natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
 }
 
 function canAfford(i, j) {
@@ -280,7 +300,7 @@ function calculateElementalGain() {
     let tempChaos = 0;
 
     for (var i = 0; i < elementals; i++) {
-        console.log("Rolling....");
+        //console.log("Rolling....");
         let rand = Math.floor(Math.random() * 4); // 0, 1, 2, 3
         switch (rand) {
             case 0:
@@ -307,6 +327,54 @@ function calculateElementalGain() {
     nature += tempNature;
     chaos += tempChaos;
 
+}
+
+function addGatherer() {
+    gatherers = gatherers + 1;
+    if ((natureMages - gatherers - planters) < 0)
+        gatherers = gatherers - 1;
+
+    document.querySelector("#countGatherer").innerHTML = gatherers;
+    natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
+}
+
+function subGatherer() {
+    gatherers = gatherers - 1;
+    if (gatherers < 0)
+        gatherers = 0;
+
+    document.querySelector("#countGatherer").innerHTML = gatherers;
+    natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
+}
+
+function addPlanter() {
+    planters = planters + 1;
+    if ((natureMages - gatherers - planters) < 0)
+        planters = planters - 1;
+
+    document.querySelector("#countPlanter").innerHTML = planters;
+    natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
+}
+
+function subPlanter() {
+    planters = planters - 1;
+    if (planters < 0)
+        planters = 0;
+
+    document.querySelector("#countPlanter").innerHTML = planters;
+    natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
+}
+
+function johnd() {
+    alert('prestige points can be called scribes or something similar...lazy wizard=can be lazier All gold UI Fresh to death fonts Chester’s chicken icons Notifications so white it’ll hurt your eyes ' +
+        'Built in XML parser On fleek progression Mom’s spaghetti (it’s ready) BOOOZZUUUUTOOOOOOOO (╯°□°）╯︵ ┻━┻  mini game Dank memes Thumb tacks ' +
+        'Steam controller support [done, pushed to store] Lazy Wizard 101: Muggle Motivation help page Get rid of all the fried foods RegEx minigames ' +
+        'Hidden corner button for stupid ideas D Knapsack to appear in credits 3D Printer API Lots of “this thing is forking garbage” reviews ' +
+        'Minecraft API compatible Ask for SU permissions before it’s even installed');
+}
+
+function bob() {
+    alert("Things Double Secret Harambe Mode Banana for scale Phil: What should we call the search parameters that limit results? Bill: How about billters? Phil: I have a better idea…");
 }
 
 
