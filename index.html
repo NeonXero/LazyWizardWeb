@@ -100,34 +100,66 @@
 
   <!-- feature zone -->
   <div class="showMe" id="natureZone">
-    <p>will be hidden normally - toggle views based on what [shown if x] clicked</p>
-    <h1>Welcome to the Nature Zone!</h1>
-    </br>
-    <p>Here you will be able to grow and collect plants to fuel all your alchemy needs. Potions, salves, and dyes
-      galore!</p>
-    <h2 id="natureZoneAvailable">Available Nature Mages: {}</h2>
-    </br>
-    </br>
+        <p>will be hidden normally - toggle views based on what [shown if x] clicked</p>
+        <h1>Welcome to the Nature Zone!</h1>
+        </br>
+        <p>Here you will be able to grow and collect plants to fuel all your alchemy needs. Potions, salves, and dyes
+          galore!</p>
+        <h2 id="natureZoneAvailable">Available Nature Mages: {}</h2>
+        </br>
+        </br>
+    
+        <div class="grid-even-columns">
+          <div class="flow">
+            <h2>Assign Gatherers</h2>
+            <div class="container">
+              <button onclick="addGatherer()">+</button>
+              <h2 id="countGatherer">0</h2>
+              <button onclick="subGatherer()">-</button>
+            </div>
+          </div>
+          <div class="flow">
+            <h2>Assign Planters</h2>
+            <div class="container">
+              <button onclick="addPlanter()">+</button>
+              <h2 id="countPlanter">0</h2>
+              <button onclick="subPlanter()">-</button>
+            </div>
+          </div>
 
-    <div class="grid-even-columns">
-      <div class="flow">
-        <h2>Assign Gatherers</h2>
-        <div class="container">
-          <button onclick="addGatherer()">+</button>
-          <h2 id="countGatherer">0</h2>
-          <button onclick="subGatherer()">-</button>
+          <div class="flow">
+            <h2>Progress</h2>
+            <!-- <button onclick="move()">START</button> -->
+            <p>Gathering:</p>
+            <div class="progressbarWrapper">
+              <span id="brownBar"></span>
+            </div>
+
+            <p>Planting:</p>
+            <div class="progressbarWrapper">
+              <span id="greenBar"></span>
+            </div>
+            
+          </div>
+
+          <div class="flow">
+            <h2>Log</h2>
+            <p>Gathering:</p>
+            <div class="findWrapper">
+              <span id="gatherBar" class="opacity-one"></span>
+            </div>
+
+            <p>Planting:</p>
+            <div class="findWrapper">
+              <span id="plantBar"></span>
+            </div>
+          </div>
+
+
         </div>
       </div>
-      <div class="flow">
-        <h2>Assign Planters</h2>
-        <div class="container">
-          <button onclick="addPlanter()">+</button>
-          <h2 id="countPlanter">0</h2>
-          <button onclick="subPlanter()">-</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- <object type="text/html" data="nature.html"></object> -->
+
 
 
 

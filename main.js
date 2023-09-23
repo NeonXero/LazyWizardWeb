@@ -111,6 +111,7 @@ let castCost = 20;*/
 $(document).ready(function () {
     console.log("ready!");
     updateUI();
+    move();
 });
 
 // Event Listeners
@@ -363,6 +364,94 @@ function subPlanter() {
 
     document.querySelector("#countPlanter").innerHTML = planters;
     natZoneAvailable.innerHTML = `Available Nature Mages: ${natureMages - gatherers - planters}`
+}
+
+function move() {
+
+    let gth = document.getElementById("brownBar");
+    let stepValueGather = 0;
+    let idGather = setInterval(frameGather, 1000); //1000 = every second it ticks, 10 steps defined somewhere? 100% = 10 seconds ... down in the stepValue calculations
+    // let fadeGather = setInterval(gatherHide, 4000);
+
+    let plt = document.getElementById("greenBar");
+    let stepValuePlant = 0;
+    let idPlant = setInterval(framePlant, 1000); //1000 = every second it ticks, 10 steps defined somewhere? 100% = 10 seconds ... down in the stepValue calculations
+
+    let findGather = document.getElementById("gatherBar");
+    let findPlant = document.getElementById("plantBar");
+    let gatherProgress = 10;
+    let plantProgress = 5;
+
+    function frameGather() {
+        //console.log("Gather step " + stepValueGather);
+console.log("Opatcity " + find)
+        if (stepValueGather >= 100) {
+            clearInterval(idGather);
+            stepValueGather = 0;
+            idGather = setInterval(frameGather, 1000);
+            gth.style.width = (0) + "%";
+            gth.innerHTML = (0) + "%";
+
+        } else {
+            if (stepValueGather == 0) {
+                findGather.style.transitionDuration = ((100 / gatherProgress) / 3) + "s";
+                findGather.classList.remove("opacity-one");
+                findGather.classList.add("opacity-zero");
+            }
+
+            if (stepValueGather == (100 - gatherProgress)) {
+
+                findGather.style.transitionDuration = "0ms";
+                findGather.classList.remove("opacity-zero");
+                findGather.classList.add("opacity-one");
+                findGather.textContent = "Found thing!! " + Math.random();
+                //TODO fade after a bit
+                // findGather.style.opacity = 0;
+
+                // console.log("Hideout going to be " + (100 / (gatherProgress) * 750));
+                // findGather.style.transitionDuration = (100 / (gatherProgress) * 750) + "ms";
+                // findGather.style.transitionDuration = "5s";
+                // findGather.classList.remove("opacity-one");
+                // findGather.classList.add("opacity-zero");
+
+                // setTimeout(gatherHide, (100 / (gatherProgress) * 750));
+                //setTimeout(gatherHide, 1000);
+                // setTimeout(() => {
+                //     gatherHide();
+                // }, 1000);
+
+            } else {
+                // findGather.classList.remove("opacity-zero");
+                // findGather.classList.add("opacity-one");
+                //findGather.textContent = "";
+            }
+
+            gth.style.width = (stepValueGather + gatherProgress) + "%";
+            gth.innerHTML = (stepValueGather + gatherProgress) + "%";
+            stepValueGather = (stepValueGather + gatherProgress);
+        }
+
+
+    }
+
+    // function gatherHide() {
+    //     console.log("Gather hide...");
+    //     //findGather.textContent = "";
+    //     findGather.classList.remove("opacity-zero");
+    //     findGather.classList.add("opacity-one");
+    // }
+
+    function framePlant() {
+        //console.log("Plant step " + stepValuePlant);
+
+        if (stepValuePlant >= 100) {
+            clearInterval(idPlant);
+        } else {
+            plt.style.width = (stepValuePlant + plantProgress) + "%";
+            plt.innerHTML = (stepValuePlant + plantProgress) + "%";
+            stepValuePlant = (stepValuePlant + plantProgress);
+        }
+    }
 }
 
 function johnd() {
